@@ -28,7 +28,7 @@
 #include "param.h"
 
 
-
+/* raptor structures */
 typedef struct _raptor_data_ raptor_data;
 struct _raptor_data_ {
 
@@ -37,8 +37,7 @@ struct _raptor_data_ {
     int64_t             *h;
     int64_t             *r0;
     int64_t             *r1;
-    int64_t             *B;
-    unsigned char       *seedB;
+
 };
 
 typedef struct _raptor_skey_ raptor_sk;
@@ -50,10 +49,25 @@ struct _raptor_skey_ {
     int64_t             *G;
 };
 
+/* one time signature structures */
+typedef struct _ots_data_ ots_data;
+struct _ots_data_ {
+    int64_t             *h;
+};
+
+
+/* linkable raptor structures */
+typedef struct _linkable_raptor_skey_ linkable_raptor_sk;
+struct _linkable_raptor_data_{
+    raptor_data         rdata;
+    ots_data            odata;
+};
+
+
 
 int
 raptor_keygen(
-    raptor_data        data,
+    raptor_data         data,
     unsigned char       *sk);
 
 int
@@ -66,14 +80,16 @@ raptor_sign(
     const unsigned char *msg,
     unsigned long long  msg_len,
     raptor_data         *data,
-    unsigned char       *sk);
+    unsigned char       *sk,
+    int64_t             *H);
 
 
 int
 raptor_verify(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    raptor_data         *data);
+    raptor_data         *data,
+    int64_t             *H);
 
 
 void

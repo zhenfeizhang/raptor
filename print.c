@@ -23,11 +23,6 @@ void print_raptor_data(
         printf("%lld, ",(long long)data.c[j]);
     printf("\n");
 
-    printf("B:\n");
-    for (j=0;j<DIM;j++)
-        printf("%lld, ",(long long)data.B[j]);
-    printf("\n");
-
     printf("r0:\n");
     for (j=0;j<DIM;j++)
         printf("%lld, ",(long long)data.r0[j]);
@@ -48,9 +43,6 @@ void print_raptor_data(
         printf("%lld, ",(long long)data.h[j]);
     printf("\n");
 
-    printf("seed:\n");
-    for (j=0;j<SEEDLEN;j++)
-        printf("%d, ",data.seedB[j]);
     printf("\n==============================\n\n");
 }
 

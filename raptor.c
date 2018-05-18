@@ -20,8 +20,9 @@ int
 raptor_sign(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    raptor_data        *data,
-    unsigned char       *sk)
+    raptor_data         *data,
+    unsigned char       *sk,
+    int64_t             *H)
 {
     int             i,j;
     int64_t         *tmp1, *tmp2, *u;
@@ -50,9 +51,9 @@ raptor_sign(
         DGS(data[i].r1, DIM, SIGMA);
         binary_poly_gen(data[i].d, DIM);
         /* compute the B polynomials */
-        pol_unidrnd_with_seed(data[i].B, DIM, PARAM_Q, data[i].seedB, SEEDLEN);
-        /* c = dB+r0+r1*h*/
-        ring_mul(tmp1, data[i].d, data[i].B, DIM);
+//        pol_unidrnd_with_seed(data[i].B, DIM, PARAM_Q, data[i].seedB, SEEDLEN);
+        /* c = dH+r0+r1*h*/
+        ring_mul(tmp1, data[i].d, H, DIM);
         ring_mul(tmp2, data[i].h, data[i].r1, DIM);
         for (j=0;j<DIM;j++)
             data[i].c[j] = (tmp1[j]+tmp2[j]+data[i].r0[j])%12289;
@@ -65,7 +66,7 @@ raptor_sign(
     /* pick a c_\pi and rebuild B_\pi */
     randombytes(seed, SEEDLEN);
     pol_unidrnd_with_seed(data[NOU-1].c, DIM, PARAM_Q, seed, SEEDLEN);
-    pol_unidrnd_with_seed(data[NOU-1].B, DIM, PARAM_Q, data[NOU-1].seedB, SEEDLEN);
+//    pol_unidrnd_with_seed(data[NOU-1].B, DIM, PARAM_Q, data[NOU-1].seedB, SEEDLEN);
 
     /* compute  hash(c1,..., ck, m) */
     form_digest( msg, msg_len, data, hashdig);
@@ -94,8 +95,8 @@ raptor_sign(
         data[NOU-1].d[i] = u[i]&1;
     }
 
-    /* compute u = c_\pi - d_\pi*B_\pi*/
-    ring_mul(u, data[NOU-1].d, data[NOU-1].B, DIM);
+    /* compute u = c_\pi - d_\pi*H*/
+    ring_mul(u, data[NOU-1].d, H, DIM);
     for(i=0;i<DIM;i++)
     {
         u[i] = (data[NOU-1].c[i] - u[i])%12289;
@@ -161,7 +162,7 @@ raptor_keygen(
     memcpy(sk, falcon_sk, CRYPTO_SECRETKEYBYTES);
 
     /* generate  seedB */
-    randombytes(data.seedB, SEEDLEN);
+ //   randombytes(data.seedB, SEEDLEN);
 
     printf("horrey, key gen is done!\n");
     return 0;
@@ -192,7 +193,7 @@ raptor_fake_keygen(
 
     /* generate seedB */
 
-    randombytes(data.seedB, SEEDLEN);
+//    randombytes(data.seedB, SEEDLEN);
 
     return 0;
 }
@@ -226,7 +227,8 @@ int
 raptor_verify(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    raptor_data        *data)
+    raptor_data         *data,
+    int64_t             *H)
 {
     int i,j;
 
@@ -244,7 +246,7 @@ raptor_verify(
     /* first, check if c = Bd+ (r0,r1)*(1,h)^T */
     for (i=0;i<NOU;i++)
     {
-        ring_mul(tmp1, data[i].d, data[i].B, DIM);
+        ring_mul(tmp1, data[i].d, H, DIM);
         ring_mul(tmp2, data[i].r1, data[i].h, DIM);
         for (j=0;j<DIM;j++)
         {
