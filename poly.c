@@ -10,7 +10,7 @@
  *      Author: zhenfei
  */
 
-#include "lobster.h"
+#include "raptor.h"
 
 uint32_t
 negate(uint32_t a)

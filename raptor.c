@@ -4,23 +4,23 @@
  *
  ******************************************************************************/
 /*
- * lobster.c
+ * raptor.c
  *
  *  Created on: May 14, 2018
  *      Author: zhenfei
  */
 
 
-#include "lobster.h"
+#include "raptor.h"
 
 
 
 
 int
-lobster_sign(
+raptor_sign(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    lobster_data        *data,
+    raptor_data        *data,
     unsigned char       *sk)
 {
     int             i,j;
@@ -143,8 +143,8 @@ lobster_sign(
 }
 
 int
-lobster_keygen(
-    lobster_data    data,
+raptor_keygen(
+    raptor_data    data,
     unsigned char   *sk)
 {
     /* Generate the public/private keypair */
@@ -169,8 +169,8 @@ lobster_keygen(
 
 
 int
-lobster_fake_keygen(
-    lobster_data        data)
+raptor_fake_keygen(
+    raptor_data        data)
 {
     /*
      * generate a fake h to simulate a valid public key
@@ -201,7 +201,7 @@ lobster_fake_keygen(
 void form_digest(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    lobster_data        *data,
+    raptor_data        *data,
     unsigned char       *out)
 {
 
@@ -223,10 +223,10 @@ void form_digest(
 }
 
 int
-lobster_verify(
+raptor_verify(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    lobster_data        *data)
+    raptor_data        *data)
 {
     int i,j;
 

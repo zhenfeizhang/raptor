@@ -24,19 +24,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: lobster
+all: raptor
 
 # Tool invocations
-lobster: $(OBJS) $(USER_OBJS)
+raptor: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross GCC Linker'
-	gcc  -o "lobster" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "raptor" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) lobster
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) raptor
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -4,14 +4,14 @@
  *
  ******************************************************************************/
 /*
- * lobster.h
+ * raptor.h
  *
  *  Created on: May 14, 2018
  *      Author: zhenfei
  */
 
-#ifndef LOBSTER_H_
-#define LOBSTER_H_
+#ifndef RAPTOR_H_
+#define RAPTOR_H_
 
 #include <stdint.h>
 #include <stdio.h>
@@ -29,8 +29,8 @@
 
 
 
-typedef struct _lobster_data_ lobster_data;
-struct _lobster_data_ {
+typedef struct _raptor_data_ raptor_data;
+struct _raptor_data_ {
 
     int64_t             *c;
     int64_t             *d;
@@ -41,8 +41,8 @@ struct _lobster_data_ {
     unsigned char       *seedB;
 };
 
-typedef struct _lobster_skey_ lobster_sk;
-struct _lobster_skey_ {
+typedef struct _raptor_skey_ raptor_sk;
+struct _raptor_skey_ {
 
     int64_t             *f;
     int64_t             *g;
@@ -52,35 +52,35 @@ struct _lobster_skey_ {
 
 
 int
-lobster_keygen(
-    lobster_data        data,
+raptor_keygen(
+    raptor_data        data,
     unsigned char       *sk);
 
 int
-lobster_fake_keygen(
-    lobster_data        data);
+raptor_fake_keygen(
+    raptor_data        data);
 
 
 int
-lobster_sign(
+raptor_sign(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    lobster_data        *data,
+    raptor_data         *data,
     unsigned char       *sk);
 
 
 int
-lobster_verify(
+raptor_verify(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    lobster_data        *data);
+    raptor_data         *data);
 
 
 void
 form_digest(
     const unsigned char *msg,
     unsigned long long  msg_len,
-    lobster_data        *data,
+    raptor_data         *data,
     unsigned char       *out);
 
 int
@@ -104,6 +104,6 @@ extract_skey(
     int64_t             *G);
 
 
-void print_lobster_data(
-    lobster_data        data);
-#endif /* LOBSTER_H_ */
+void print_raptor_data(
+    raptor_data        data);
+#endif /* RAPTOR_H_ */

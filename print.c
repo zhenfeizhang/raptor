@@ -10,14 +10,14 @@
  *      Author: zhenfei
  */
 
-#include "lobster.h"
+#include "raptor.h"
 
 
-void print_lobster_data(
-    lobster_data        data)
+void print_raptor_data(
+    raptor_data        data)
 {
     int j;
-    printf("\nprinting lobster data for (yet another) user \n");
+    printf("\nprinting raptor data for (yet another) user \n");
     printf("c:\n");
     for (j=0;j<DIM;j++)
         printf("%lld, ",(long long)data.c[j]);
@@ -56,8 +56,8 @@ void print_lobster_data(
 
 
 
-void print_lobster_sk(
-    lobster_sk      sk)
+void print_raptor_sk(
+    raptor_sk      sk)
 {
     int j;
 

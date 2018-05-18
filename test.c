@@ -11,7 +11,7 @@
  */
 
 
-#include "lobster.h"
+#include "raptor.h"
 
 int main()
 {
@@ -19,11 +19,11 @@ int main()
 
     int     i;
 
-    lobster_data    data[NOU];
+    raptor_data     data[NOU];
     unsigned char   *sk;
 
     int             mlen = 16;
-    unsigned char   m[]  = "Lobster: lattice based one time linkable ring signature";
+    unsigned char   m[]  = "raptor: lattice based one time linkable ring signature";
 
     /* initializing pk */
     for (i=0;i<NOU;i++)
@@ -40,32 +40,32 @@ int main()
     sk                =   malloc(CRYPTO_SECRETKEYBYTES);
 
 
-    /* generating lobster keys */
+    /* generating raptor keys */
     for  (i=0;i<NOU-1;i++)
     {
-        lobster_fake_keygen(data[i]);
+        raptor_fake_keygen(data[i]);
     }
 
-    lobster_keygen(data[NOU-1], sk);
+    raptor_keygen(data[NOU-1], sk);
 
 #ifdef DEBUG
-    print_lobster_data(data[NOU-1]);
+    print_raptor_data(data[NOU-1]);
 #endif
 
 
     /* performing signing */
-    lobster_sign(m, mlen, data, sk);
+    raptor_sign(m, mlen, data, sk);
 
 
 
     /* printing public data */
     for(i=0;i<NOU;i++)
-        print_lobster_data(data[i]);
+        print_raptor_data(data[i]);
 
 
-    lobster_verify (m, mlen, data);
+    raptor_verify (m, mlen, data);
 
-    printf("we like lobster\n");
+    printf("we like raptor\n");
     return 0;
 }
 

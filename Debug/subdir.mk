@@ -4,19 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../lobster.c \
+../raptor.c \
 ../poly.c \
 ../print.c \
 ../test.c 
 
 OBJS += \
-./lobster.o \
+./raptor.o \
 ./poly.o \
 ./print.o \
 ./test.o 
 
 C_DEPS += \
-./lobster.d \
+./raptor.d \
 ./poly.d \
 ./print.d \
 ./test.d 
