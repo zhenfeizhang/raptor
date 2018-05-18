@@ -12,12 +12,7 @@
 
 
 #include "raptor.h"
-
-int main()
-{
-    test_raptor();
-    test_linkable_raptor();
-}
+#include <time.h>
 
 int test_linkable_raptor()
 {
@@ -29,20 +24,23 @@ int test_raptor()
 {
 
 
-    int     i;
-
+    int             i, j;
+    clock_t         start, end;
+    float           time_keygen, time_sign, time_verify;
     raptor_data     data[NOU];
     unsigned char   *sk;
     unsigned char   *seedH;
     int64_t         *H;
 
     int             mlen = 16;
-    unsigned char   m[]  = "raptor: lattice based one time linkable ring signature";
+    unsigned char   m[]  = "Raptor: next generation of Falcon with stealth mode";
 
 
     /* initializing public param */
     seedH           =   malloc(SEEDLEN);
     H               =   malloc(sizeof(int64_t)*DIM);
+    randombytes(seedH,SEEDLEN);
+    pol_unidrnd_with_seed(H, DIM, PARAM_Q, seedH, SEEDLEN);
 
     /* initializing pk */
     for (i=0;i<NOU;i++)
@@ -58,36 +56,53 @@ int test_raptor()
     sk              =   malloc(CRYPTO_SECRETKEYBYTES);
 
 
-    /* generating raptor keys */
+    time_keygen =   0;
+    time_sign   =   0;
+    time_verify =   0;
+
     for  (i=0;i<NOU-1;i++)
     {
         raptor_fake_keygen(data[i]);
     }
 
-    raptor_keygen(data[NOU-1], sk);
+    for (j=0;j<100;j++)
+    {
+        /* generating raptor keys */
+        start = clock();
+
+        raptor_keygen(data[NOU-1], sk);
 
 #ifdef DEBUG
-    print_raptor_data(data[NOU-1]);
+        print_raptor_data(data[NOU-1]);
 #endif
+        end = clock();
+        time_keygen += (float)(end-start);
 
 
-    /* performing signing */
-    randombytes(seedH,SEEDLEN);
-    pol_unidrnd_with_seed(H, DIM, PARAM_Q, seedH, SEEDLEN);
+        /* performing signing */
 
-    raptor_sign(m, mlen, data, sk, H);
 
+
+        start = clock();
+        raptor_sign(m, mlen, data, sk, H);
+        end = clock();
+        time_sign += (float)(end-start);
+
+        /* verify the signature */
+        start = clock();
+        raptor_verify (m, mlen, data, H);
+        end = clock();
+        time_verify += (float)(end-start);
+    }
 
 
     /* printing public data */
     for(i=0;i<NOU;i++)
         print_raptor_data(data[i]);
 
-
-
-
-    raptor_verify (m, mlen, data, H);
-
+    printf("time keygen :%f\n", time_keygen/100);
+    printf("time sign :%f\n", time_sign/100);
+    printf("time verify :%f\n", time_verify/100);
 
 
 
@@ -124,9 +139,9 @@ int test_ring_mul()
     for(i=0;i<n;i++)
     {
         rng_uint16(&r);
-        a[i] = r%12289;
+        a[i] = r%PARAM_Q;
         rng_uint16(&r);
-        b[i] = r%12289;
+        b[i] = r%PARAM_Q;
     }
 
     ring_mul (res,a,b,n);
@@ -146,8 +161,15 @@ int test_ring_mul()
 
     printf("res:\n");
     for (i=0;i<n;i++)
-        printf("%lld, ",(long long)(res[i]%12289));
+        printf("%lld, ",(long long)(res[i]%PARAM_Q));
     printf("\n");
 
     return 0;
+}
+
+
+int main()
+{
+    test_raptor();
+    test_linkable_raptor();
 }

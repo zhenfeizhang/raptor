@@ -16,8 +16,8 @@
 
 void
 karatsuba(
-    int64_t        *res1,      /* out - a * b in Z[x], must be length 2k */
-    int64_t        *tmp1,      /*  in - k coefficients of scratch space */
+    int64_t        *res,       /* out - a * b in Z[x], must be length 2k */
+    int64_t        *tmp,       /*  in - k coefficients of scratch space */
     int64_t const  *a,         /*  in - polynomial */
     int64_t const  *b,         /*  in - polynomial */
     uint16_t const  k);        /*  in - number of coefficients in a and b */
@@ -31,8 +31,8 @@ ring_mul(
 
 /* generate a random binary polynomial */
 void binary_poly_gen(
-        int64_t         *ai,
-        const uint16_t  N);
+    int64_t         *ai,
+    const uint16_t  N);
 
 /*
  * Discrete Gaussian sampler using Box-Muller method

@@ -50,13 +50,14 @@ raptor_sign(
         DGS(data[i].r0, DIM, SIGMA);
         DGS(data[i].r1, DIM, SIGMA);
         binary_poly_gen(data[i].d, DIM);
-        /* compute the B polynomials */
-//        pol_unidrnd_with_seed(data[i].B, DIM, PARAM_Q, data[i].seedB, SEEDLEN);
+
         /* c = dH+r0+r1*h*/
         ring_mul(tmp1, data[i].d, H, DIM);
         ring_mul(tmp2, data[i].h, data[i].r1, DIM);
         for (j=0;j<DIM;j++)
-            data[i].c[j] = (tmp1[j]+tmp2[j]+data[i].r0[j])%12289;
+        {
+            data[i].c[j] = (tmp1[j]+tmp2[j]+data[i].r0[j])%PARAM_Q;
+        }
     }
 
     /*
@@ -66,7 +67,6 @@ raptor_sign(
     /* pick a c_\pi and rebuild B_\pi */
     randombytes(seed, SEEDLEN);
     pol_unidrnd_with_seed(data[NOU-1].c, DIM, PARAM_Q, seed, SEEDLEN);
-//    pol_unidrnd_with_seed(data[NOU-1].B, DIM, PARAM_Q, data[NOU-1].seedB, SEEDLEN);
 
     /* compute  hash(c1,..., ck, m) */
     form_digest( msg, msg_len, data, hashdig);
@@ -99,7 +99,7 @@ raptor_sign(
     ring_mul(u, data[NOU-1].d, H, DIM);
     for(i=0;i<DIM;i++)
     {
-        u[i] = (data[NOU-1].c[i] - u[i])%12289;
+        u[i] = (data[NOU-1].c[i] - u[i])%PARAM_Q;
     }
 
     /* sign on u to get r0_\pi and r1_\pi*/
@@ -138,8 +138,10 @@ raptor_sign(
     free (hashdig);
     free (seed);
 
+/*
+ *  printf("horrey, signature is done!\n");
+ */
 
-    printf("horrey, signature is done!\n");
     return 0;
 }
 
@@ -161,10 +163,10 @@ raptor_keygen(
     extract_pkey(falcon_pk, data.h);
     memcpy(sk, falcon_sk, CRYPTO_SECRETKEYBYTES);
 
-    /* generate  seedB */
- //   randombytes(data.seedB, SEEDLEN);
+/*
+ *  printf("horrey, key gen is done!\n");
+ */
 
-    printf("horrey, key gen is done!\n");
     return 0;
 }
 
@@ -190,10 +192,6 @@ raptor_fake_keygen(
     pol_unidrnd_with_seed(data.h, DIM, PARAM_Q, seed, SEEDLEN);
 
     free(seed);
-
-    /* generate seedB */
-
-//    randombytes(data.seedB, SEEDLEN);
 
     return 0;
 }
@@ -299,7 +297,9 @@ raptor_verify(
     free(tmp1);
     free(tmp2);
     free(hashdig);
-    printf("horrey, verification is done!\n");
+/*
+ *  printf("horrey, verification is done!\n");
+ */
     return 0;
 }
 
@@ -349,19 +349,19 @@ extract_skey(
 
 #ifdef DEBUG
     printf("f_res = vector([\n");
-    for (i=0;i<512;i++)
+    for (i=0;i<DIM;i++)
     printf("%d, ",f[i]);
     printf("])\n");
     printf("g_res = vector([\n");
-    for (i=0;i<512;i++)
+    for (i=0;i<DIM;i++)
     printf("%d, ",g[i]);
     printf("])\n");
     printf("F_res = vector([\n");
-    for (i=0;i<512;i++)
+    for (i=0;i<DIM;i++)
     printf("%d, ",F[i]);
     printf("])\n");
     printf("G_res = vector([\n");
-    for (i=0;i<512;i++)
+    for (i=0;i<DIM;i++)
     printf("%d, ",G[i]);
     printf("])\n");
 #endif
@@ -378,15 +378,15 @@ extract_pkey(
     uint16_t            *h16;
 
 
-    h16 = malloc(sizeof(uint16_t)*512);
-    falcon_decode_12289(h16, 9,falcon_pk+1, 896);
+    h16 = malloc(sizeof(uint16_t)*DIM);
+    falcon_decode_12289(h16, 9,falcon_pk+1, CRYPTO_PUBLICKEYBYTES-1);
     for (i=0;i<DIM;i++)
         h[i] = (int64_t) h16[i];
     free (h16);
 
 #ifdef DEBUG
     printf("h = vector([\n");
-    for (i=0;i<512;i++)
+    for (i=0;i<DIM;i++)
     printf("%d, ",h[i]);
     printf("])\n");
 #endif

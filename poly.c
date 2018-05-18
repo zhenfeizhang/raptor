@@ -12,13 +12,7 @@
 
 #include "raptor.h"
 
-uint32_t
-negate(uint32_t a)
-{
-    return 12289-(a%12289);
-}
-
-/* redution mod x^n+1 ring */
+/* reduction mod x^n+1 ring */
 void
 ring_mul(
     int64_t        *res,        /* out - a * b in Z[x], must be length 2k */
@@ -41,7 +35,7 @@ ring_mul(
     for (i=0;i<k;i++)
     {
         res[i] = res1[i] - res1[i+k];
-        res[i] %=  12289;
+        res[i] %= PARAM_Q;
     }
     free(res1);
 
@@ -199,39 +193,39 @@ pol_unidrnd_with_seed(
     unsigned char    *seed,
     const int16_t    seed_len)
 {
-  int16_t   i = 0, j = 0;
-  uint16_t  *buf;
+    int16_t   i = 0, j = 0;
+    uint16_t  *buf;
 
-  buf = malloc(sizeof(int64_t)*64);
-  if (!buf)
-  {
-      printf("malloc error\n");
-      return;
-  }
+    buf = malloc(sizeof(int64_t)*64);
+    if (!buf)
+    {
+        printf("malloc error\n");
+        return;
+    }
 
 #ifdef DEBUG
-  printf("seed:\n");
-  for (i=0;i<seed_len;i++)
-      printf("%d, ", seed[i]);
-  printf("\n");
-  i=0;
+    printf("seed:\n");
+    for (i=0;i<seed_len;i++)
+        printf("%d, ", seed[i]);
+    printf("\n");
+    i=0;
 #endif
 
-  crypto_hash_sha512((unsigned char*)buf, seed, seed_len);
+    crypto_hash_sha512((unsigned char*)buf, seed, seed_len);
 
 
-  while (i<N)
-  {
-      crypto_hash_sha512((unsigned char*)buf, (unsigned char*)buf, 64);
-      for (j=0;j<32;j++)
-      {
-          if ((buf[j]<5*q) && (i<N))
-              v[i++] = buf[j]%q;
-      }
-  }
-  free(buf);
+    while (i<N)
+    {
+        crypto_hash_sha512((unsigned char*)buf, (unsigned char*)buf, 64);
+        for (j=0;j<32;j++)
+        {
+            if ((buf[j]<5*q) && (i<N))
+            v[i++] = buf[j]%q;
+        }
+    }
+    free(buf);
 
-  return;
+    return;
 }
 
 
