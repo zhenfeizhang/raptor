@@ -88,6 +88,9 @@ int test_linkable_raptor()
             return -1;
         }
         end = clock();
+
+//        linkable_raptor_keygen(data[NOU-1],sk, ots_pk, ots_sk);
+
         time_keygen += (float)(end-start);
 
         /* performing signing */
@@ -283,6 +286,6 @@ int test_ring_mul()
 
 int main()
 {
-///    test_raptor();
+    test_raptor();
     test_linkable_raptor();
 }

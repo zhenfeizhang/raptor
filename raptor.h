@@ -49,21 +49,6 @@ struct _raptor_skey_ {
     int64_t             *G;
 };
 
-/* one time signature structures */
-typedef struct _ots_pk_ ots_pk;
-struct _ots_pk_ {
-    unsigned char       *pk;
-};
-
-
-/* linkable raptor structures */
-typedef struct _linkable_raptor_data_ linkable_raptor_data;
-struct _linkable_raptor_data_{
-    raptor_data         rdata;
-    unsigned char       *ots_pk;
-    unsigned char       *ots_sig;
-};
-
 
 
 int
@@ -73,7 +58,7 @@ raptor_keygen(
 
 int
 raptor_fake_keygen(
-    raptor_data        data);
+    raptor_data         data);
 
 
 int
@@ -94,24 +79,25 @@ raptor_verify(
 
 int
 linkable_raptor_sign(
-    const unsigned char *msg,
+    const unsigned char *msg,           /* in       -   msg to be signed */
     unsigned long long  msg_len,
-    raptor_data         *data,
-    unsigned char       *sk,
-    int64_t             *H,
-    unsigned char       *ots_pk,
-    unsigned char       *ots_sk,
-    unsigned char       *ots_sm);
+    raptor_data         *data,          /* in/out   -   list of public keys and associated data */
+    unsigned char       *sk,            /* in       -   secret key */
+    int64_t             *H,             /* in       -   public matrix */
+    unsigned char       *ots_pk,        /* in       -   one time signature public key */
+    unsigned char       *ots_sk,        /* in       -   one time signature secret key */
+    unsigned char       *ots_sm);       /* out      -   one time signature */
+                                        /* return   -   the length of signature */
 
 int
 linkable_raptor_verify(
-    const unsigned char *msg,
+    const unsigned char *msg,           /* in       -   msg signed */
     unsigned long long  msg_len,
-    raptor_data         *data,
-    int64_t             *H,
-    unsigned char       *ots_pk,
-    unsigned char       *ots_sm,
-    unsigned long long  ots_mlen);
+    raptor_data         *data,          /* in       -   list of public keys and associated data */
+    int64_t             *H,             /* in       -   public matrix */
+    unsigned char       *ots_pk,        /* in       -   one time signature public key */
+    unsigned char       *ots_sm,        /* in       -   one time signature */
+    unsigned long long  ots_mlen);      /* in       -   the length of signature */
 
 void
 form_digest(

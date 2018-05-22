@@ -109,6 +109,7 @@ linkable_raptor_sign(
     unsigned char       *ots_sm)
 {
 
+
     /* generate the ring signature */
     raptor_sign(msg, msg_len, data, sk, H);
 
@@ -285,9 +286,44 @@ raptor_sign(
     return 0;
 }
 
+int linkable_raptor_keygen(
+    raptor_data     data,
+    unsigned char   *sk,
+    unsigned char   *ots_pk,        /* in       -   one time signature public key */
+    unsigned char   *ots_sk)        /* in       -   one time signature secret key */
+{
+
+    /* generate raptor keys */
+    if(raptor_keygen(data, sk)!=0)
+    {
+        printf("raptor key gen failed");
+        return -1;
+    }
+    /* generate OTS keys */
+    int             ret_val;
+    if ( (ret_val = crypto_sign_keypair(ots_pk, ots_sk)) != 0) {
+        printf("crypto_sign_keypair returned <%d>\n", ret_val);
+        return -1;
+    }
+    /* generate masking matrix */
+    int             i;
+    unsigned char   seed[SEEDLEN];
+    int64_t         mask[DIM];
+    crypto_hash_sha512(seed, ots_pk, CRYPTO_PUBLICKEYBYTES);
+    pol_unidrnd_with_seed(mask, DIM, PARAM_Q, seed, SEEDLEN);
+    for (i=0; i<DIM; i++)
+    {
+        data.h[i] = (data.h[i] + mask[i])%PARAM_Q;
+        if (data.h[i] <0)
+            data.h[i] += PARAM_Q;
+    }
+    return 0;
+}
+
+
 int
 raptor_keygen(
-    raptor_data    data,
+    raptor_data     data,
     unsigned char   *sk)
 {
     /* Generate the public/private keypair */
@@ -313,7 +349,7 @@ raptor_keygen(
 
 int
 raptor_fake_keygen(
-    raptor_data        data)
+    raptor_data     data)
 {
     /*
      * generate a fake h to simulate a valid public key
