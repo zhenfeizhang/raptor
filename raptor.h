@@ -50,17 +50,18 @@ struct _raptor_skey_ {
 };
 
 /* one time signature structures */
-typedef struct _ots_data_ ots_data;
-struct _ots_data_ {
-    int64_t             *h;
+typedef struct _ots_pk_ ots_pk;
+struct _ots_pk_ {
+    unsigned char       *pk;
 };
 
 
 /* linkable raptor structures */
-typedef struct _linkable_raptor_skey_ linkable_raptor_sk;
+typedef struct _linkable_raptor_data_ linkable_raptor_data;
 struct _linkable_raptor_data_{
     raptor_data         rdata;
-    ots_data            odata;
+    unsigned char       *ots_pk;
+    unsigned char       *ots_sig;
 };
 
 
@@ -91,6 +92,26 @@ raptor_verify(
     raptor_data         *data,
     int64_t             *H);
 
+int
+linkable_raptor_sign(
+    const unsigned char *msg,
+    unsigned long long  msg_len,
+    raptor_data         *data,
+    unsigned char       *sk,
+    int64_t             *H,
+    unsigned char       *ots_pk,
+    unsigned char       *ots_sk,
+    unsigned char       *ots_sm);
+
+int
+linkable_raptor_verify(
+    const unsigned char *msg,
+    unsigned long long  msg_len,
+    raptor_data         *data,
+    int64_t             *H,
+    unsigned char       *ots_pk,
+    unsigned char       *ots_sm,
+    unsigned long long  ots_mlen);
 
 void
 form_digest(
