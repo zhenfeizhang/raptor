@@ -17,7 +17,7 @@
 #define DIM     512     /* ntru ring: x^512+1 */
 #define SEEDLEN 64
 #define SIGMA   123     /* also the smooth parameter */
-#define NOU     5       /* Number of users */
+#define NOU     50      /* Number of users */
 #define PARAM_Q 12289
 #define PARAM_NONCE     40
 
