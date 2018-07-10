@@ -38,9 +38,9 @@ This FOSS License Exception, along with the GPL licensing of Raptor, is an irrev
 
 FOSS License List
 ------------------
+
 | License Name 	| Version(s)/Copyright Date | 
 | ------------- |:-------------:|
-
  | Release Early  | 	Certified Software | 
  | Academic Free License  | 	2.0 | 
  | Apache Software License 	 | 1.0/1.1/2.0 | 
