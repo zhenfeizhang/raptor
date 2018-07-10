@@ -7,7 +7,7 @@ This Free and Open Source Software ("FOSS") License Exception allows developers 
 
 This FOSS License Exception, along with the GPL licensing of Raptor, is an irrevocable grant by OnBoard Security, Inc. and cannot be withdrawn by OnBoard Security, Inc, and/or any future owners of the Patented Raptor Algorithms.
 
-* **Definitions.**
+1. **Definitions.**
 
   * "Derivative Work" means a derivative work, as defined under applicable copyright law, formed entirely from the GPLed Raptor and one or more FOSS Projects.
 
@@ -19,7 +19,7 @@ This FOSS License Exception, along with the GPL licensing of Raptor, is an irrev
 
   * "GPLed Raptor" means Raptor, distributed under the GPL v2 or higher.
 
-* **A FOSS Project developer ("you" or "your")** may distribute a Derivative Work provided that you and the Derivative Work meet all of the following conditions:
+2. **A FOSS Project developer ("you" or "your")** may distribute a Derivative Work provided that you and the Derivative Work meet all of the following conditions:
 
   * You obey the GPL in all respects for the GPLed Raptor and all portions (including modifications) of the GPLed Raptor included in the Derivative Work (provided that this condition does not apply to Independent Works);
   
@@ -33,7 +33,7 @@ This FOSS License Exception, along with the GPL licensing of Raptor, is an irrev
   
   * You distribute a copy of this FOSS License Exception with your Derivative Work.
 
-* **OnBoard Security, Inc. reserves all rights** not expressly granted in these terms and conditions. If all of the above conditions are not met, then this FOSS License Exception does not apply to you or your Derivative Work.
+3. **OnBoard Security, Inc. reserves all rights** not expressly granted in these terms and conditions. If all of the above conditions are not met, then this FOSS License Exception does not apply to you or your Derivative Work.
 
 
 FOSS License List
