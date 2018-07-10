@@ -38,240 +38,37 @@ This FOSS License Exception, along with the GPL licensing of Raptor, is an irrev
 
 FOSS License List
 ------------------
-<table border="1" cellspacing="0" cellpadding="0">
-    <tbody><tr class="columns">
-        <td>
-            <strong>License Name</strong>
-        </td>
-	<td>
-            <strong>Version(s)/Copyright Date</strong>
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Release Early
-	</td>
-	<td>
-            Certified Software
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Academic Free License
-	</td>
-	<td>
-            2.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Apache Software License
-	</td>
-	<td>
-            1.0/1.1/2.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Apple Public Source License
-	</td>
-	<td>
-            2.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Artistic license
-	</td>
-	<td>
-            From Perl 5.8.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            BSD license
-	</td>
-	<td>
-            "July 22 1999"
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Common Development and Distribution License (CDDL)
-	</td>
-	<td>
-            1.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Common Public License
-	</td>
-	<td>
-            1.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Eclipse Public License
-	</td>
-	<td>
-            1.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            European Union Public License (EUPL)<sup>1</sup>
-	</td>
-	<td>
-            1.1
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            GNU Affero General Public License (AGPL)
-	</td>
-	<td>
-            3.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            GNU Library or "Lesser" General Public License (LGPL)
-	</td>
-	<td>
-            2.0/2.1/3.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            GNU General Public License (GPL)
-	</td>
-	<td>
-            3.0
-	</td>
-    </tr>
-	    <tr class="info">
-        <td valign="top">
-            IBM Public License
-	</td>
-	<td>
-            1.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Jabber Open Source License
-	</td>
-	<td>
-            1.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            MIT License (As listed in file MIT-License.txt)
-	</td>
-	<td>
-            -
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Mozilla Public License (MPL)
-	</td>
-	<td>
-            1.0/1.1
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Open Software License
-	</td>
-	<td>
-            2.0
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            OpenSSL license (with original SSLeay license)
-	</td>
-	<td>
-            "2003" ("1998")
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            PHP License
-	</td>
-	<td>
-            3.0/3.01
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Python license (CNRI Python License)
-	</td>
-	<td>
-            -
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Python Software Foundation License
-	</td>
-	<td>
-            2.1.1
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Sleepycat License
-	</td>
-	<td>
-            "1999"
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            University of Illinois/NCSA Open Source License
-	</td>
-	<td>
-            -
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            W3C License
-	</td>
-	<td>
-            "2001"
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            X11 License
-	</td>
-	<td>
-            "2001"
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Zlib/libpng License
-	</td>
-	<td>
-            -
-	</td>
-    </tr>
-    <tr class="info">
-        <td valign="top">
-            Zope Public License
-	</td>
-	<td>
-            2.0
-        </td>
-    </tr>
-</tbody></table>
+| License Name 	| Version(s)/Copyright Date | 
+| ------------- |:-------------:|
+
+ | Release Early  | 	Certified Software | 
+ | Academic Free License  | 	2.0 | 
+ | Apache Software License 	 | 1.0/1.1/2.0 | 
+ | Apple Public Source License  | 2.0 | 
+ | Artistic license  | 	From Perl   5.8.0 | 
+ | BSD license  | 	"July 22 1999" | 
+ | Common Development and Distribution License (CDDL) 	 | 1.0 | 
+ | Common Public License  | 	1.0 | 
+ | Eclipse Public License 	 | 1.0 | 
+ | European Union Public License (EUPL)  | 	1.1 | 
+ | GNU Affero General Public License (AGPL)  | 	3.0 | 
+ | GNU Library or "Lesser" General Public License (LGPL) |  	2.0/2.1/3.0 | 
+ | GNU General Public License (GPL)  | 	3.0 | 
+ | IBM Public License 	 | 1.0 | 
+ | Jabber Open Source License  | 	1.0 | 
+ | MIT License (As listed in file MIT-License.txt) |  	- | 
+ | Mozilla Public License (MPL) 	 | 1.0/1.1 | 
+ | Open Software License  | 	2.0 | 
+ | OpenSSL license (with original SSLeay license) 	 | "2003" ("1998") | 
+ | PHP License 	 | 3.0/3.01 | 
+ | Python license (CNRI Python License)  | 	- | 
+ | Python Software Foundation License  | 	2.1.1 | 
+ | Sleepycat License  | 	"1999" | 
+ | University of Illinois/NCSA Open Source License 	 | - | 
+ | W3C License  | "2001" | 
+ | X11 License  | 	"2001" | 
+ | Zlib/libpng License  | 	- | 
+ | Zope Public License  | 	2.0  | 
 
 FAQ
 ----
