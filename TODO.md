@@ -1,16 +1,11 @@
 TODO list 
 ========================
 
-1. Linkable signature
-
-2. Standard model
-
-3. Signature compression
-
-4. Supporting Falcon-1024
-
-5. removing redundancy
-
+* signature size compression
+* more efficient discrete Gaussian sampler 
+* replace Karatsuba with NTT
+* supporting Falcon-1024
+* removing redundancy
 * strip out NIST wrapper
-
 * unify the PRNG, XOF, hash, etc
+* merge into CryptoNote 

@@ -3,37 +3,37 @@ FOSS License Exception
 
 What is the FOSS License Exception?
 ------------------------------------------
-This Free and Open Source Software ("FOSS") License Exception allows developers of FOSS Projects to include *Patented NTRU Algorithms and/or NTRU reference code ("NTRU")* with their FOSS Projects. NTRU is licensed pursuant to version 2 (or later) of the General Public License ("GPL"), or under commercial license. This exception permits distribution of NTRU, licensed under GPL, with a developer's FOSS Project licensed under the terms of another FOSS license listed below, even though such other FOSS license may be incompatible with the GPL.
+This Free and Open Source Software ("FOSS") License Exception allows developers of FOSS Projects to include *Patented Raptor Algorithms and/or Raptor reference code ("Raptor")* with their FOSS Projects. Raptor is licensed pursuant to version 2 (or later) of the General Public License ("GPL"), or under commercial license. This exception permits distribution of Raptor, licensed under GPL, with a developer's FOSS Project licensed under the terms of another FOSS license listed below, even though such other FOSS license may be incompatible with the GPL.
 
-This FOSS License Exception, along with the GPL licensing of NTRU, is an irrevocable grant by Security Innovation, Inc. and cannot be withdrawn by Security Innovation, Inc, and/or any future owners of the Patented NTRU Algorithms.
+This FOSS License Exception, along with the GPL licensing of Raptor, is an irrevocable grant by OnBoard Security, Inc. and cannot be withdrawn by OnBoard Security, Inc, and/or any future owners of the Patented Raptor Algorithms.
 
 1. **Definitions.**
 
-    "Derivative Work" means a derivative work, as defined under applicable copyright law, formed entirely from the GPLed NTRU and one or more FOSS Projects.
+    "Derivative Work" means a derivative work, as defined under applicable copyright law, formed entirely from the GPLed Raptor and one or more FOSS Projects.
 
     "FOSS Project" means a free and open source software product distributed subject to a license listed in the section below titled "FOSS License List."
 
-    "FOSS Notice" means a notice placed by Security Innovation, Inc. in the NTRU Crypto Library Repository ("ntru-crypto") stating that NTRU may be distributed under Security Innovation's FOSS License Exception. As of December 4th 2013, this repository is hosted on github at https://github.com/NTRUOpenSourceProject/ntru-crypto
+    "FOSS Notice" means a notice placed by OnBoard Security, Inc. in the Raptor Crypto Library Repository ("raptor") stating that Raptor may be distributed under OnBoard Security's FOSS License Exception. As of December 4th 2013, this repository is hosted on github at https://github.com/NTRUOpenSourceProject/raptor
 
-    "Independent Work" means portions of the Derivative Work that are not derived from the GPLed NTRU and can reasonably be considered independent and separate works.
+    "Independent Work" means portions of the Derivative Work that are not derived from the GPLed Raptor and can reasonably be considered independent and separate works.
 
-    "GPLed NTRU" means NTRU, distributed under the GPL v2 or higher.
+    "GPLed Raptor" means Raptor, distributed under the GPL v2 or higher.
 
 2.  **A FOSS Project developer ("you" or "your")** may distribute a Derivative Work provided that you and the Derivative Work meet all of the following conditions:
 
-  a. You obey the GPL in all respects for the GPLed NTRU and all portions (including modifications) of the GPLed NTRU included in the Derivative Work (provided that this condition does not apply to Independent Works);
+  * You obey the GPL in all respects for the GPLed Raptor and all portions (including modifications) of the GPLed Raptor included in the Derivative Work (provided that this condition does not apply to Independent Works);
   
-  b. The Derivative Work does not include any work licensed under the GPL other than the GPLed NTRU;
+  * The Derivative Work does not include any work licensed under the GPL other than the GPLed Raptor;
   
-  c. You distribute Independent Works subject to a license listed in the section below titled "FOSS License List";
+  * You distribute Independent Works subject to a license listed in the section below titled "FOSS License List";
   
-  d. You distribute Independent Works in object code or executable form with the complete corresponding machine-readable source code on the same medium and under the same FOSS license applying to the object code or executable forms;
+  * You distribute Independent Works in object code or executable form with the complete corresponding machine-readable source code on the same medium and under the same FOSS license applying to the object code or executable forms;
   
-  e. All works that are aggregated with the GPLed NTRU or the Derivative Work on a medium or volume of storage are not derivative works of the GPLed NTRU, Derivative Work or FOSS Project, and must reasonably be considered independent and separate works.
+  * All works that are aggregated with the GPLed Raptor or the Derivative Work on a medium or volume of storage are not derivative works of the GPLed Raptor, Derivative Work or FOSS Project, and must reasonably be considered independent and separate works.
   
-  f. You distribute a copy of this FOSS License Exception with your Derivative Work.
+  * You distribute a copy of this FOSS License Exception with your Derivative Work.
 
-3. **Security Innovation, Inc. reserves all rights** not expressly granted in these terms and conditions. If all of the above conditions are not met, then this FOSS License Exception does not apply to you or your Derivative Work.
+3. **OnBoard Security, Inc. reserves all rights** not expressly granted in these terms and conditions. If all of the above conditions are not met, then this FOSS License Exception does not apply to you or your Derivative Work.
 
 
 FOSS License List
@@ -143,7 +143,6 @@ FOSS License List
             2.0/2.1/3.0
 	</td>
     </tr>
-
     <tr class="info">
         <td valign="top">
             GNU General Public License (GPL)
@@ -152,7 +151,6 @@ FOSS License List
             3.0
 	</td>
     </tr>
-
 	    <tr class="info">
         <td valign="top">
             IBM Public License
@@ -161,7 +159,6 @@ FOSS License List
             1.0
 	</td>
     </tr>
-
     <tr class="info">
         <td valign="top">
             Jabber Open Source License
@@ -279,9 +276,9 @@ FOSS License List
 FAQ
 ----
 
-*Q:* Are the NTRU patents covered under the FOSS exception
+*Q:* Are the Raptor patents covered under the FOSS exception
 
-*A:* Yes, the NTRU patents are covered by the FOSS exception 
+*A:* Yes, the Raptor patents are covered by the FOSS exception 
 
 *Q:* What are the benefits of the FOSS license exception
 
