@@ -6,7 +6,7 @@ Contacts:
 
 * Zhenfei Zhang
 
-Contacts may be reached by sending mail to support@onboardsecurity.com
+Contacts may be reached by sending mail to lastnamefirstname at gmail
 
 
 
@@ -33,7 +33,6 @@ Todo list
 * removing redundancy
 * strip out NIST wrapper
 * unify the PRNG, XOF, hash, etc
-* merge into CryptoNote 
 
 FAQ
 ===
