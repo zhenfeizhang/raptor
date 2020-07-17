@@ -24,10 +24,13 @@ The Raptor cryptography system consists of two component:
 * lattice-based ring signature;
 * lattice-based one time linkable ring signature.
 
-Todo list
--------------
+Status of this code
+-----
+* Prototype
+* non-audited (use at your own risk)
+
 * signature size compression
-* more efficient discrete Gaussian sampler 
+* more efficient discrete Gaussian sampler
 * replace Karatsuba with NTT
 * supporting Falcon-1024
 * removing redundancy
@@ -39,14 +42,17 @@ FAQ
 What is Raptor?
 -------------
 Raptor is an efficient instantiation of lattice based linkable ring signature.
-The paper describing this signature scheme is under peer review.
+The paper describing this signature scheme can be found:
 
+  [__Raptor: A Practical Lattice-Based (Linkable) Ring Signature__](https://eprint.iacr.org/2018/857)
+  _Xingye Lu_, _Man Ho Au_ and _Zhenfei Zhang_,
+  ACNS 2019.
 
 
 How efficient is Raptor?
 -----------------
 Raptor is the only implementable lattice based ring signature to date.
-The current characteristics are 
+The current characteristics are
 
 | Users       |     5    |  10 | 50 |
 | ------------- |:-------------:| -----:| -----:|
@@ -58,7 +64,7 @@ The current characteristics are
 
 It will be more efficient once I finish the todo list.
 The estimated signing time will be of the same level as ECC based solutions, i.e., ~ 1 ms per signature.
-The size will be 
+The size will be
 
 | Users       |     5    |  10 | 50 |
 | ------------- |:-------------:| -----:| -----:|
@@ -70,20 +76,19 @@ The size will be
 
 Is Raptor Patented?
 -----------------
-The source code is released under GPL.
-The Raptor algorithms are covered by the following patents:
+This source code is released under GPL.
+The Raptor algorithms are covered, to the best of my knowledge, by the following patents:
 
-* NTRUSIGN
-* NTRU/Falcon based chameleon hash plus scheme; TBA
-* A new generic framework for ring signature; TBA
-* Raptor - instantiation of the framework with NTRU/Falcon
-
-
-The patents will still be enforced but may be used under the GPL, 
-i.e. under the condition that any work that uses them is also made available under the GPL. 
-The patents and the code implementations are also available under standard commercial terms.
+* NTRUSIGN (expiring 2021(?))
+* ~~NTRU/Falcon based chameleon hash plus scheme; TBA~~
+* ~~A new generic framework for ring signature; TBA~~
+* ~~Raptor - instantiation of the framework with NTRU/Falcon~~
 
 
+~The patents will still be enforced but may be used under the GPL,~
+~i.e. under the condition that any work that uses them is also made available under the GPL.~
+~The patents and the code implementations are also available under standard commercial terms.~
+
+<!---
 ![](logo/ntru.png)![](logo/obs.png)
-
-
+--->
