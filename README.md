@@ -27,15 +27,15 @@ The Raptor cryptography system consists of two component:
 Status of this code
 -----
 * Prototype
-* non-audited (use at your own risk)
-
-* signature size compression
-* more efficient discrete Gaussian sampler
-* replace Karatsuba with NTT
-* supporting Falcon-1024
-* removing redundancy
-* strip out NIST wrapper
-* unify the PRNG, XOF, hash, etc
+* non-audited (__use at your own risk!!!__)
+* may use the following improvements:
+  * signature size compression
+  * more efficient discrete Gaussian sampler
+  * replace Karatsuba with NTT
+  * supporting Falcon-1024
+  * removing redundancy
+  * strip out NIST wrapper
+  * unify the PRNG, XOF, hash, etc
 
 FAQ
 ===
